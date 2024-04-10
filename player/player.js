@@ -213,7 +213,6 @@ const lands = {
   24: { name: "출발", price: 0},
 };
 // 땅을 구매할지 여부를 묻는 함수 정의
-// 땅을 구매할지 여부를 묻는 함수 정의
 function askToBuyLand(player, position) {
   const cell = arr[position];
   if (cell.classList.contains("btn") && !cell.classList.contains("Special")) { // 땅인지 확인
@@ -226,13 +225,28 @@ function askToBuyLand(player, position) {
       if (buyConfirmation) {
         // 구매 확인 시
         if (player === "redPlayer") {
-          redPlayerMoney.textContent = +redPlayerMoney.textContent - cellPrice;
+          if (+redPlayerMoney.textContent >= cellPrice) {
+            redPlayerMoney.textContent = +redPlayerMoney.textContent - cellPrice;
+            cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
+            lands[position].owner = player; // 땅의 소유주 변경
+            alert(`${cellID} 칸을 구매하였습니다.`);
+            
+          } else {
+            alert("소지금이 부족합니다.");
+            return; // 구매 실패 시 함수 종료
+          }
         } else {
-          bluePlayerMoney.textContent = +bluePlayerMoney.textContent - cellPrice;
+          if (+bluePlayerMoney.textContent >= cellPrice) {
+            bluePlayerMoney.textContent = +bluePlayerMoney.textContent - cellPrice;
+            cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
+            lands[position].owner = player; // 땅의 소유주 변경
+            alert(`${cellID} 칸을 구매하였습니다.`);
+            // 땅 구매후 아이콘만들기
+          } else {
+            alert("소지금이 부족합니다.");
+            return; // 구매 실패 시 함수 종료
+          }
         }
-        cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
-        lands[position].owner = player; // 땅의 소유주 변경
-        alert(`${cellID} 칸을 구매하였습니다.`);
       } else {
         // 구매 취소 시
         alert("구매를 취소하였습니다.");
@@ -243,7 +257,6 @@ function askToBuyLand(player, position) {
     }
   }
 }
-
 // 플레이어가 다른 플레이어의 땅에 들어갔을 때 통행료를 지불하는 함수 정의
 function payToll(player, position) {
   const cell = arr[position];

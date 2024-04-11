@@ -19,8 +19,8 @@ const row1Elements = document.querySelectorAll(".row:last-child .cell");
 const row1Arr = Array.from(row1Elements).reverse(); // 첫 번째 .row 요소의 자식 요소를 역순으로 저장
 arr.push(...row1Arr);
 
-// 9, 11, 13, 15, 17 cell 배열에 저장
-const middle1Elements = ["9", "11", "13", "15", "17"];
+// "8", "9", "10", "11", "12"cell 배열에 저장
+const middle1Elements = ["8", "9", "10", "11", "12"];
 for (const id of middle1Elements) {
   const element = document.getElementById(id);
   if (element) {
@@ -28,13 +28,13 @@ for (const id of middle1Elements) {
   }
 }
 
-// 18~24 cell 배열에 저장
+// 13~19 cell 배열에 저장
 const row2Elements = document.querySelectorAll(".row:first-child .cell");
 const row2Arr = Array.from(row2Elements); // 두 번째 .row 요소의 자식 요소를 역순으로 저장
 arr.push(...row2Arr);
 
-// 16, 14, 12, 10, 8 cell 배열에 저장
-const middle2Elements = ["16", "14", "12", "10", "8"];
+// "20", "21", "22", "23", "24" cell 배열에 저장
+const middle2Elements = ["20", "21", "22", "23", "24"];
 for (const id of middle2Elements) {
   const element = document.getElementById(id);
   if (element) {
@@ -145,12 +145,14 @@ function movePlayer(player, diceRoll) {
 function updatePlayerPosition(player) {
   // 이전 위치의 플레이어 캐릭터 말 제거
   const playerDiv = document.querySelector(`.${player}`);
+  console.log(playerDiv);
   if (playerDiv) {
     playerDiv.remove(); // 이전 위치의 플레이어 캐릭터 말 요소 삭제
   }
 
   // 새로운 위치에 플레이어 캐릭터 말 추가
   const targetDiv = arr[getCurrentPlayerPosition()]; // 현재 플레이어의 위치에 해당하는 보드판 요소 가져오기
+  // console.log(targetDiv);
   const playerElement = document.createElement("div");
   playerElement.className = `player ${player}`; // red면 class="player redplayer"
   targetDiv.appendChild(playerElement); // 새로운 위치에 플레이어 캐릭터 말 추가
@@ -166,16 +168,19 @@ function updatePlayerPosition(player) {
 
 
 // 주사위 버튼 클릭 이벤트
-$diceBtn.addEventListener("click", () => {
+$diceBtn.addEventListener("click", (event) => {
   // 주사위 굴리기
   const diceResult = rollDice(); // 주사위 결과 값 저장
   console.log(`주사위 값: ${diceResult}`);
+
+    // 이벤트 전파 중지
+    event.stopPropagation();
 
   // 현재 플레이어의 위치 업데이트 및 캐릭터 말 이동
   movePlayer(currentPlayer, diceResult); // 현재 플레이어의 이동
   updatePlayerPosition(currentPlayer); // 현재 플레이어의 위치 업데이트
 
-
+  checkGameOver();
 
   // 플레이어 전환
   currentPlayer = currentPlayer === "redPlayer" ? "bluePlayer" : "redPlayer"; // 플레이어 턴 전환
@@ -184,6 +189,7 @@ $diceBtn.addEventListener("click", () => {
   console.log(`현재 플레이어: ${currentPlayer}`);
 });
 
+// console.log(arr);
 
 //땅에 대한 정보 객체로 정리한 것. 해당 번호는 셀의 id값과 동일함. 이걸 이용해야할 듯----
 const lands = {
@@ -227,7 +233,7 @@ function askToBuyLand(player, position) {
         if (player === "redPlayer") {
           if (+redPlayerMoney.textContent >= cellPrice) {
             redPlayerMoney.textContent = +redPlayerMoney.textContent - cellPrice;
-            cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
+            // cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
             lands[position].owner = player; // 땅의 소유주 변경
             alert(`${cellID} 칸을 구매하였습니다.`);
             
@@ -238,7 +244,7 @@ function askToBuyLand(player, position) {
         } else {
           if (+bluePlayerMoney.textContent >= cellPrice) {
             bluePlayerMoney.textContent = +bluePlayerMoney.textContent - cellPrice;
-            cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
+            // cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
             lands[position].owner = player; // 땅의 소유주 변경
             alert(`${cellID} 칸을 구매하였습니다.`);
             // 땅 구매후 아이콘만들기
@@ -278,4 +284,70 @@ function payToll(player, position) {
       alert(`${player}님, ${landOwner}님의 땅에 들어가 통행료 ${toll}원을 지불하였습니다.`);
     }
   }
+}
+
+
+// 게임 종료 조건 확인 및 출력 함수
+function checkGameOver() {
+  // 빨간 플레이어의 소지금 확인
+  const redMoney = +redPlayerMoney.textContent;
+  if (redMoney <= 0) {
+    alert("빨간 플레이어의 소지금이 0원 이하로 떨어졌습니다. 파란 플레이어가 승리했습니다!");
+    const playAgain = confirm("한 판 더 하시겠습니까?");
+    if (playAgain) {
+      resetGame();
+    } else {
+      // 게임 종료
+      alert("게임을 종료합니다.");
+      // 추가적인 종료 작업 수행
+    }
+    return; // 게임 종료 후 더 이상 코드를 실행하지 않음
+  }
+
+  // 파란 플레이어의 소지금 확인
+  const blueMoney = +bluePlayerMoney.textContent;
+  if (blueMoney <= 0) {
+    alert("파란 플레이어의 소지금이 0원 이하로 떨어졌습니다. 빨간 플레이어가 승리했습니다!");
+    const playAgain = confirm("한 판 더 하시겠습니까?");
+    if (playAgain) {
+      resetGame();
+    } else {
+      // 게임 종료
+      alert("게임을 종료합니다.");
+      // 추가적인 종료 작업 수행
+    }
+      // 주사위 클릭 이벤트 제거
+      removeDiceRollEventListener();
+   
+    return; // 게임 종료 후 더 이상 코드를 실행하지 않음
+  }
+}
+
+// 리셋게임 함수
+function resetGame() {
+  // 플레이어 소지금 초기화
+  redPlayerMoney.textContent = 1000000;
+  bluePlayerMoney.textContent = 1000000;
+
+  // 플레이어 위치 초기화
+  redPlayerPosition = 0;
+  bluePlayerPosition = 0;
+
+  // 보드판 상태 초기화
+  for (const position in lands) {
+    if (lands.hasOwnProperty(position)) {
+      lands[position].owner = null; // 각 땅의 소유주를 null로 설정
+    }
+  }
+
+  // 현재 플레이어를 빨간 플레이어로 초기화
+  currentPlayer = "redPlayer";
+  
+  // 초기 플레이어 위치 업데이트
+  updatePlayerPosition(currentPlayer);
+}
+
+  // 주사위 이벤트 제거 함수
+function removeDiceRollEventListener() {
+  $diceBtn.removeEventListener("click", rollDiceHandler);
 }

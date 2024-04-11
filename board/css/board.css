@@ -47,3 +47,14 @@
 .board .btn:active{
   background: rgba(0,0,0,0.1);
 }
+/* .redPlayer{
+  background-image: url(/board/img/free-icon-residential-2801677.png);
+  width: 10px;
+  height: 10px;
+}
+.bluePlayer{
+  background-image: url(/board/img/free-icon-sweet-home-3156242.png);
+  width: 10px;
+  height: 10px;
+}
+ */

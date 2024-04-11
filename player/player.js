@@ -183,7 +183,7 @@ function updatePlayerPosition(player) {
 
 function showDiceImg(diceResult) {
   if (($diceImg.style.backgroundImage = "none")) {
-    $diceImg.style.backgroundImage = "url(/board/img/i016280274048.gif)";
+    $diceImg.style.backgroundImage = "url(../board/img/dice.gif)";
   }
 
   setTimeout(function () {
@@ -192,17 +192,17 @@ function showDiceImg(diceResult) {
 
   setTimeout(function () {
     if (diceResult === 1) {
-      $diceImg.style.backgroundImage = "url(/board/img/1.png)";
+      $diceImg.style.backgroundImage = "url(../board/img/1.png)";
     } else if (diceResult === 2) {
-      $diceImg.style.backgroundImage = "url(/board/img/2.png)";
+      $diceImg.style.backgroundImage = "url(../board/img/2.png)";
     } else if (diceResult === 3) {
-      $diceImg.style.backgroundImage = "url(/board/img/3.png)";
+      $diceImg.style.backgroundImage = "url(../board/img/3.png)";
     } else if (diceResult === 4) {
-      $diceImg.style.backgroundImage = "url(/board/img/4.png)";
+      $diceImg.style.backgroundImage = "url(../board/img/4.png)";
     } else if (diceResult === 5) {
-      $diceImg.style.backgroundImage = "url(/board/img/5.png)";
+      $diceImg.style.backgroundImage = "url(../board/img/5.png)";
     } else if (diceResult === 6) {
-      $diceImg.style.backgroundImage = "url(/board/img/6.png)";
+      $diceImg.style.backgroundImage = "url(../board/img/6.png)";
     }
   }, 1300);
 
@@ -211,7 +211,6 @@ function showDiceImg(diceResult) {
   }, 1500);
 }
 function showPlayerInfo() {
-  $diceImg.textContent = `현재 플레이어: ${currentPlayer}`;
 
   setTimeout(function () {
     $diceImg.textContent = "";
@@ -311,7 +310,7 @@ function askToBuyLand(player, position) {
             alert(`${cellID} 칸을 구매하였습니다.`);
             // 땅 구매후 아이콘만들기
           } else {
-            alert("소지금이 부족합니다.");
+            alert("💸소지금이 부족합니다.💸");
             return; // 구매 실패 시 함수 종료
           }
         }

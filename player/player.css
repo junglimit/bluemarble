@@ -39,8 +39,8 @@
 
 /* 플레이어 말 깜빡임 애니메이션 효과 */
 @keyframes blink {
-    0% { opacity: 1; top: 0;} /* 시작 시 보임 */
-    50% { opacity: 0.8; top:-2px;} /* 50% 시점에서 사라짐 */
-    100% { opacity: 1; top: 0;} /* 끝나면 다시 보임 */
+    0% { opacity: 1; top: 0;} 
+    50% { opacity: 0.8; top:-2px;} 
+    100% { opacity: 1; top: 0;}
   }
 

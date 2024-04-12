@@ -408,6 +408,7 @@ function checkGameOver() {
       alert("게임을 종료합니다.");
       const gameOverBox = document.querySelector('.gameoverbox');
       gameOverBox.style.zIndex = 9999;
+      gameOverBox.style.opacity = 0.8;
     }, 2000);
     return; // 게임 종료 후 더 이상 코드를 실행하지 않음
   }
@@ -422,6 +423,7 @@ function checkGameOver() {
       alert("게임을 종료합니다.");
       const gameOverBox = document.querySelector('.gameoverbox');
       gameOverBox.style.zIndex = 9999;
+      gameOverBox.style.opacity = 0.8;
     }, 2000);
     
     return; // 게임 종료 후 더 이상 코드를 실행하지 않음

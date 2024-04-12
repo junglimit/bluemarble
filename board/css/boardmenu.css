@@ -4,6 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'WavvePADO-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTHakgyoansimTtwimteulR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimTtwimteulR.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   background: url(../img/bg1.jpg) no-repeat;
@@ -22,18 +34,18 @@ body {
   width: 350px;
   margin-top: 20px;
   text-align: center;
-  background: greenyellow;
+  background: rgb(137, 201, 41);
   border-radius: 20px;
 }
 
 
 /* 메뉴판 제목 */
 #title h1 {
-  padding: 30px;
+  padding: 35px;
   font-size: 40px;
   color: rgb(255, 255, 255);
-  font-weight: 600;
-  font-family: 'Tenada', sans-serif;
+  font-weight: 400;
+  font-family: 'TTHakgyoansimTtwimteulR';
   text-shadow: 3px 3px 0px #6c6b6b;
 }
 
@@ -49,24 +61,24 @@ body {
 
 /* 메뉴판 - 플레이어 정보 */
 #title div.playerA {
-  background: yellow;
+  background: rgb(252, 210, 39);
   border-radius: 20px;
   padding: 20px;
 }
 #title div.playerA h2{
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 15px;
+  font-family: WavvePADO-Regular;
 }
 
 #title div.playerB {
-  background: orange;
+  background: rgb(255, 174, 23);
   border-radius: 20px;
   padding: 20px;
   margin-top: 10px;
 }
 #title div.playerB h2{
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 15px;
+  font-family: WavvePADO-Regular;
 }
 
 /* 현재 누구의 턴인지 보여주는 */
@@ -83,8 +95,8 @@ body {
   animation: blink 1.5s ease infinite; /* blink 애니메이션 적용 */
 }
 .turn .diceInfo #currentPlayerDisplay{
-  font-family: Tenada;
-  font-size: 18px;
+  font-family: WavvePADO-Regular;
+  font-size: 20px;
   margin-top: -30px;
 }
 /* 플레이어 말 깜빡임 애니메이션 효과 */

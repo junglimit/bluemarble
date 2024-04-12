@@ -35,6 +35,7 @@
 .player {
     transform: scale(0.5); /* 모든 플레이어 말의 크기 조정 */
     animation: blink 1.5s ease infinite; /* blink 애니메이션 적용 */
+    z-index: 100;
 }
 
 /* 플레이어 말 깜빡임 애니메이션 효과 */
@@ -44,3 +45,19 @@
     100% { opacity: 1; top: 0;}
   }
 
+/* 랜드마크 이미지 생성 */
+.mark {
+    display: block;
+    position: absolute;
+    width: 100px; /* 플레이어 말 너비 */
+    height: 100px; /* 플레이어 말 높이 */
+   /* 말의 중심을 말의 좌측 상단에서 중앙으로 이동 */
+}
+.red-landmark{
+    transform:scale(0.6);
+    background: url('../board/img/redlandmark.png') no-repeat center/cover;
+}
+.blue-landmark{
+    transform:scale(0.6);
+    background: url('../board/img/bluelandmark.png') no-repeat center/cover;
+}

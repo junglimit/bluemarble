@@ -180,6 +180,23 @@ function updatePlayerPosition(player) {
   }
 }
 
+function addLandmark(player, position) {
+  const cell = arr[position];
+  
+  // 이미 랜드마크가 있는지 확인
+  const landmarkExists = cell.querySelector(`.${player}-landmark`);
+  if (landmarkExists) {
+    return; // 이미 랜드마크가 있는 경우 함수 종료
+  }
+
+  // 새로운 랜드마크 요소 생성
+  const landmarkElement = document.createElement("div");
+  landmarkElement.className = `landmark ${player}-landmark`; // 플레이어별 클래스 지정 (red-landmark, blue-landmark 등)
+
+  // 랜드마크를 해당 셀에 추가
+  cell.appendChild(landmarkElement);
+}
+
 
 function showDiceImg(diceResult) {
   if (($diceImg.style.backgroundImage = "none")) {
@@ -287,7 +304,7 @@ function askToBuyLand(player, position) {
     const cellPrice = lands[position].price; 
 
     if (lands[position].owner === null) { // 땅의 소유주가 없는 경우에만 구매 확인 대화상자 띄우기
-      const buyConfirmation = confirm(`${player}님, ${cellID} 칸에 도착했습니다. ${cellPrice}원에 이 땅을 구매하시겠습니까?`);
+      const buyConfirmation = confirm(`${player}님, 🚩${cellID} 칸에 도착했습니다.\n💰${cellPrice}원에 이 땅을 구매하시겠습니까?`);
 
       if (buyConfirmation) {
         // 구매 확인 시
@@ -296,7 +313,16 @@ function askToBuyLand(player, position) {
             redPlayerMoney.textContent = +redPlayerMoney.textContent - cellPrice;
             // cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
             lands[position].owner = player; // 땅의 소유주 변경
-            alert(`${cellID} 칸을 구매하였습니다.`);
+
+            // 랜드마크 이미지 요소 생성
+          const landmarkElement = document.createElement("div");
+          landmarkElement.className = `mark red-landmark`;
+          console.log('랜드마크 건설');
+
+          // 랜드마크 이미지를 해당 셀에 추가
+          cell.appendChild(landmarkElement);
+
+            alert(`🏰 ${cellID} 칸을 구매하였습니다.`);
             
           } else {
             alert("💸소지금이 부족합니다.💸");
@@ -307,7 +333,15 @@ function askToBuyLand(player, position) {
             bluePlayerMoney.textContent = +bluePlayerMoney.textContent - cellPrice;
             // cell.classList.add(player); // 플레이어의 클래스를 땅에 추가하여 소유 표시
             lands[position].owner = player; // 땅의 소유주 변경
-            alert(`${cellID} 칸을 구매하였습니다.`);
+            
+                         // 랜드마크 이미지 요소 생성
+          const landmarkElement = document.createElement("div");
+          landmarkElement.className = `mark blue-landmark`;
+
+          // 랜드마크 이미지를 해당 셀에 추가
+          cell.appendChild(landmarkElement);
+
+            alert(`🏰 ${cellID} 칸을 구매하였습니다.`);
             // 땅 구매후 아이콘만들기
           } else {
             alert("💸소지금이 부족합니다.💸");
@@ -316,7 +350,7 @@ function askToBuyLand(player, position) {
         }
       } else {
         // 구매 취소 시
-        alert("구매를 취소하였습니다.");
+        alert("구매를 취소하였습니다.🥲");
       }
     } else {
       // 이미 소유주가 있는 경우에는 구매 확인 대화상자 띄우지 않고 통행료 지불 함수를 실행
@@ -342,7 +376,7 @@ function payToll(player, position) {
         bluePlayerMoney.textContent = +bluePlayerMoney.textContent - toll;
         redPlayerMoney.textContent = +redPlayerMoney.textContent + toll;
       }
-      alert(`${player}님, ${landOwner}님의 땅에 들어가 💰통행료 ${toll}원💰을 지불하였습니다.`);
+      alert(`${player}님, ${landOwner}님의 땅에 들어가\n💰통행료 ${toll}원💰을 지불하였습니다.`);
     }
   }
 }
@@ -353,7 +387,7 @@ function checkGameOver() {
   // 빨간 플레이어의 소지금 확인
   const redMoney = +redPlayerMoney.textContent;
   if (redMoney <= 0) {
-    alert("🚗RED PLAYER의 소지금이 0원 이하로 떨어졌습니다.\n🚙BLUE PLAYER가 승리했습니다!");
+    alert("🚗RED PLAYER의 소지금이 0원 이하로 떨어졌습니다.\n🚙BLUE PLAYER가 승리했습니다‼️🎉🎉🎉");
     const playAgain = confirm("한 판 더 하시겠습니까?");
     if (playAgain) {
       resetGame();
@@ -368,7 +402,7 @@ function checkGameOver() {
   // 파란 플레이어의 소지금 확인
   const blueMoney = +bluePlayerMoney.textContent;
   if (blueMoney <= 0) {
-    alert("🚙BLUE PLAYER의 소지금이 0원 이하로 떨어졌습니다. \n🚗RED PLAYER가 승리했습니다!");
+    alert("🚙BLUE PLAYER의 소지금이 0원 이하로 떨어졌습니다.\n🚗RED PLAYER가 승리했습니다!");
     const playAgain = confirm("한 판 더 하시겠습니까?");
     if (playAgain) {
       resetGame();

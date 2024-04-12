@@ -481,14 +481,20 @@ $diceBtn.addEventListener("click", (event) => {
 
   // 현재 플레이어 출력
   const currentPlayerDisplay = document.getElementById("currentPlayerDisplay");
-  currentPlayerDisplay.textContent = ` ${currentPlayer}님의 차례입니다`;
+  setTimeout(function () {
+    currentPlayerDisplay.textContent = ` ${currentPlayer}님의 차례입니다`;
+  }, 1500);
   console.log(`현재 플레이어: ${currentPlayer}`);
 
   // 플레이어 말 이미지 설정
   const playerTokenImg = document.getElementById("playerToken");
   if (currentPlayer === "redPlayer") {
-    playerTokenImg.src = "../player/img/redPlayer.png"; // 빨간 말 이미지 경로 설정
+    setTimeout(function () {
+      playerTokenImg.src = "../player/img/redPlayer.png"; // 빨간 말 이미지 경로 설정
+    }, 1500);
   } else {
-    playerTokenImg.src = "../player/img/bluePlayer.png"; // 파란 말 이미지 경로 설정
+    setTimeout(function () {
+      playerTokenImg.src = "../player/img/bluePlayer.png"; // 파란 말 이미지 경로 설정
+    }, 1500);
   }
 });

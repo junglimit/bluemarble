@@ -98,14 +98,14 @@ function movePlayer(player, diceRoll) {
       console.log(`${player}의 돈을 올리세요`);
       setTimeout(function () {
         alert("🚗RED PLAYER님\n월급 200,000원 축하드립니다!!");
-      }, 2000);
+      }, 1600);
       redPlayerMoney.textContent = +redPlayerMoney.textContent + 200000;
       redPlayerRound.textContent = +redPlayerRound.textContent + 1;
     } else {
       console.log(`${player}의 돈을 올리세요`);
       setTimeout(function () {
         alert("🚙BLUE PLAYER님\n월급 200,000원 축하드립니다!!");
-      }, 2000);
+      }, 1600);
       bluePlayerMoney.textContent = +bluePlayerMoney.textContent + 200000;
       bluePlayerRound.textContent = +bluePlayerRound.textContent + 1;
     }
@@ -125,7 +125,7 @@ function movePlayer(player, diceRoll) {
     if (currentPosition === 12) {
       setTimeout(function () {
         alert("🚗RED PLAYER님\n 50만원 기부 감사합니다🤗");
-      }, 2000);
+      }, 1600);
       redPlayerMoney.textContent = +redPlayerMoney.textContent - 500000;
       console.log("사회복지기금 Red");
     }
@@ -134,7 +134,7 @@ function movePlayer(player, diceRoll) {
       bluePlayerMoney.textContent = +bluePlayerMoney.textContent - 500000;
       setTimeout(function () {
         alert("🚙BLUE PLAYER님\n 50만원 기부 감사합니다🤗");
-      }, 2000);
+      }, 1600);
       console.log("사회복지기금 Blue");
     }
   }
@@ -146,7 +146,7 @@ function movePlayer(player, diceRoll) {
         alert(
           "🚗RED PLAYER님\n 무인도에 불시착했습니다..30만원을 내고 구조선을 불렀습니다😥"
         );
-      }, 2000);
+      }, 1600);
       redPlayerMoney.textContent = +redPlayerMoney.textContent - 300000;
       console.log("무인도 Red");
     }
@@ -156,7 +156,7 @@ function movePlayer(player, diceRoll) {
         alert(
           "🚙BLUE PLAYER님\n 무인도에 불시착했습니다..30만원을 내고 구조선을 불렀습니다😥"
         );
-      }, 2000);
+      }, 1600);
       bluePlayerMoney.textContent = +bluePlayerMoney.textContent - 300000;
       console.log("무인도 Blue");
     }
@@ -408,7 +408,7 @@ function checkGameOver() {
       alert("게임을 종료합니다.");
       const gameOverBox = document.querySelector('.gameoverbox');
       gameOverBox.style.zIndex = 9999;
-    }, 1500);
+    }, 2000);
     return; // 게임 종료 후 더 이상 코드를 실행하지 않음
   }
 
@@ -422,7 +422,7 @@ function checkGameOver() {
       alert("게임을 종료합니다.");
       const gameOverBox = document.querySelector('.gameoverbox');
       gameOverBox.style.zIndex = 9999;
-    }, 1500);
+    }, 2000);
     
     return; // 게임 종료 후 더 이상 코드를 실행하지 않음
   }

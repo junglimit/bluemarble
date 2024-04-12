@@ -18,8 +18,7 @@
 }
 
 body {
-  background: url(../img/bg1.jpg) no-repeat;
-  background-size: cover;
+ background: url(../img/background.png) no-repeat center/cover;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -107,8 +106,6 @@ body {
 }
 
 
-
-
 /* 주사위 굴러가는 이미지 */
 section.dice .dice-image{
   border: 1px solid #000;
@@ -116,6 +113,9 @@ section.dice .dice-image{
   border-radius: 20px;
   background: white;
   margin-top: 30px;
+  background-size: cover;
+  background-position: center;
+  /* background-image: url(/board/img/dice.gif); */
 }
 
 

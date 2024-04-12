@@ -165,10 +165,6 @@ function movePlayer(player, diceRoll) {
   // 우주여행 칸 이벤트
   if (player === "redPlayer") {
     if (currentPosition === 18) {
-      // 플레이어 위치 업데이트
-      redPlayerPosition = spacePosition;
-      console.log("우주여행 Red");
-      
       let spacePosition;
       do {
         spacePosition = +prompt(

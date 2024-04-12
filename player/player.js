@@ -405,20 +405,10 @@ function checkGameOver() {
       alert(
         "🚗RED PLAYER의 소지금이 0원 이하로 떨어졌습니다.\n🚙BLUE PLAYER가 승리했습니다!"
       );
+      alert("게임을 종료합니다.");
+      const gameOverBox = document.querySelector('.gameoverbox');
+      gameOverBox.style.zIndex = 9999;
     }, 1500);
-    setTimeout(function () {
-      const playAgain = confirm("한 판 더 하시겠습니까?");
-
-      if (playAgain) {
-        resetGame();
-      } else {
-        // 게임 종료
-        alert("게임을 종료합니다.");
-        // 추가적인 종료 작업 수행
-      }
-      // 주사위 클릭 이벤트 제거
-      removeDiceRollEventListener();
-    }, 1700);
     return; // 게임 종료 후 더 이상 코드를 실행하지 않음
   }
 
@@ -429,52 +419,43 @@ function checkGameOver() {
       alert(
         "🚙BLUE PLAYER의 소지금이 0원 이하로 떨어졌습니다. \n🚗RED PLAYER가 승리했습니다!"
       );
+      alert("게임을 종료합니다.");
+      const gameOverBox = document.querySelector('.gameoverbox');
+      gameOverBox.style.zIndex = 9999;
     }, 1500);
-    setTimeout(function () {
-      const playAgain = confirm("한 판 더 하시겠습니까?");
-
-      if (playAgain === true) {
-        resetGame();
-      } else {
-        // 게임 종료
-        alert("게임을 종료합니다.");
-        // 추가적인 종료 작업 수행
-      }
-      // 주사위 클릭 이벤트 제거
-      removeDiceRollEventListener();
-    }, 1700);
+    
     return; // 게임 종료 후 더 이상 코드를 실행하지 않음
   }
 }
 
 // 리셋게임 함수
-function resetGame() {
-  // 플레이어 소지금 초기화
-  redPlayerMoney.textContent = 1000000;
-  bluePlayerMoney.textContent = 1000000;
+// function resetGame() {
+//   // 플레이어 소지금 초기화
+//   redPlayerMoney.textContent = 1000000;
+//   bluePlayerMoney.textContent = 1000000;
 
-  // 플레이어 위치 초기화
-  redPlayerPosition = 0;
-  bluePlayerPosition = 0;
+//   // 플레이어 위치 초기화
+//   redPlayerPosition = 0;
+//   bluePlayerPosition = 0;
 
-  // 보드판 상태 초기화
-  for (const position in lands) {
-    if (lands.hasOwnProperty(position)) {
-      lands[position].owner = null; // 각 땅의 소유주를 null로 설정
-    }
-  }
+//   // 보드판 상태 초기화
+//   for (const position in lands) {
+//     if (lands.hasOwnProperty(position)) {
+//       lands[position].owner = null; // 각 땅의 소유주를 null로 설정
+//     }
+//   }
 
-  // 현재 플레이어를 빨간 플레이어로 초기화
-  currentPlayer = "redPlayer";
+//   // 현재 플레이어를 빨간 플레이어로 초기화
+//   currentPlayer = "redPlayer";
 
-  // 초기 플레이어 위치 업데이트
-  updatePlayerPosition(currentPlayer);
-}
+//   // 초기 플레이어 위치 업데이트
+//   updatePlayerPosition(currentPlayer);
+// }
 
-// 주사위 이벤트 제거 함수
-function removeDiceRollEventListener() {
-  $diceBtn.removeEventListener("click", rollDiceHandler);
-}
+// // 주사위 이벤트 제거 함수
+// function removeDiceRollEventListener() {
+//   $diceBtn.removeEventListener("click", rollDiceHandler);
+// }
 
 // 주사위 버튼 클릭 이벤트
 $diceBtn.addEventListener("click", (event) => {

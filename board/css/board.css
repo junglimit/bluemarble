@@ -1,3 +1,9 @@
+body {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}
 
 .board{
   background: url(../img/board.jpg) no-repeat center/cover;
@@ -47,3 +53,22 @@
   background: rgba(0,0,0,0.1);
 }
 
+.gameoverbox{
+  border: 3px solid #000;
+  background: #000;
+  width: 1145px;
+  height: 795px;
+  position: absolute;
+  z-index: -9999;
+  opacity: 0.8;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+.gameoverbox p{
+  color: #fff;
+  align-content: center;
+  text-align: center;
+  padding-top: 370px;
+  font-size: 28px;
+  
+}

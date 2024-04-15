@@ -1,5 +1,5 @@
 
-# LUCKY DICE 🎲
+## LUCKY DICE 🎲
 
 
 ※MainPage

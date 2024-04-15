@@ -11,30 +11,27 @@
 <br>
 <br>
 
-📢 서비스 개요
-<br>
-<br>
-브루마블 게임은 JavaScript로 제작된 보드 게임입니다. 
-2인의 플레이어가 경쟁하여 승리하는 재미있는 경험을 제공합니다. 
-언제 어디서든 무료할 때 간편한 사용자 인터페이스를 통해 쉽게 플레이해보세요!!
-<br>
-<br>
-<br>
-<br>
-
-👋 팀원
-<br>
-<br>
-👩‍💻 이찬희 	https://github.com/chanhee7 	<br>
-👨‍💻 정재한		https://github.com/junglimit 	<br>
-👨‍💻 정혜린		https://github.com/hyerin11	<br>
-👩‍💻 주우빈		https://github.com/binwoojoo	<br>
+## 📢 서비스 개요
+- 브루마블 게임은 JavaScript로 제작된 보드 게임입니다. 
+- 2인의 플레이어가 경쟁하여 승리하는 재미있는 경험을 제공합니다. 
+- 언제 어디서든 무료할 때 간편한 사용자 인터페이스를 통해 쉽게 플레이해보세요!!
 <br>
 <br>
 <br>
 <br>
 
-🔨 기술 스택
+## 👋 팀원
+
+- 👩‍💻 이찬희 	https://github.com/chanhee7 	<br>
+- 👨‍💻 정재한		https://github.com/junglimit 	<br>
+- 👨‍💻 정혜린		https://github.com/hyerin11	<br>
+- 👩‍💻 주우빈		https://github.com/binwoojoo	<br>
+<br>
+<br>
+<br>
+<br>
+
+## 🔨 기술 스택
 <br>
 <br>
 📜 FRONT
